@@ -1,8 +1,14 @@
 import {useState, useEffect} from 'react'
+import {Link} from "react-router-dom"
 
-function Products() {
+function Products({cart, setCart}) {
    const [products, setProducts] = useState([])
-
+   const handleCart=(productId, productName)=>{
+  const newProduct={productId, productName}
+   const newCart=[...cart, newProduct]
+   setCart(newCart)
+   console.log(cart)
+   }
    useEffect(() => {
      const getAllData = async () => {
        try {
@@ -31,16 +37,18 @@ function Products() {
    return (
      <div>
        <p>Fake Store Products</p>
+       <Link to="/cart">view cart</Link>
        {
          products.map((product) => {
            return (
              <>
              <div key={product.id}>
-               <h4>Name: {product.title}</h4>
-               <p>Product Description: {product.description}</p>
+               <h4>Name: {product.title}</h4> 
+               <p>Product Description: {product.description}</p> 
                <p>Price: {`$${product.price}`} </p>
                <p>Rating: {product.rating.rate}</p>
                <img src={product.image} height={150} width={200} />
+               <button onClick={()=>{handleCart(product.id,product.title)}}>add to cart</button>
              </div>
           
              </>
