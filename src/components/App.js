@@ -5,6 +5,7 @@ import Cart from './Cart';
 import Products from './Products';
 import Login from './Login';
 import Welcome from './Welcome'
+import CheckoutComplete from './CheckoutComplete'
 
 const App = () => {
 const [cart, setCart] = useState ([])
@@ -18,6 +19,7 @@ const [cart, setCart] = useState ([])
         <Route path="/products" element={<Products cart={cart} setCart={setCart}/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>}/>
+        <Route path="/checkoutcomplete" element={<CheckoutComplete/>}/>
       </Routes>
     </>
   )

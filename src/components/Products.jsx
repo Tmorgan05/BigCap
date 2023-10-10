@@ -3,11 +3,20 @@ import {Link} from "react-router-dom"
 
 function Products({cart, setCart}) {
    const [products, setProducts] = useState([])
-   const handleCart=(productId, productName)=>{
-  const newProduct={productId, productName}
-   const newCart=[...cart, newProduct]
-   setCart(newCart)
-   console.log(cart)
+   const handleCart=(product)=>{
+      let newCart=cart
+      let newProduct=product
+      console.log(cart)
+      const itemIndex=cart.findIndex(item=>{
+        item.id===product.id
+      })
+      if (itemIndex>-1){
+        newCart[itemIndex].quantity++
+      } else {
+        newProduct.quantity=1
+        newCart.push(newProduct)
+      }
+       setCart(newCart)
    }
    useEffect(() => {
      const getAllData = async () => {
@@ -48,7 +57,7 @@ function Products({cart, setCart}) {
                <p>Price: {`$${product.price}`} </p>
                <p>Rating: {product.rating.rate}</p>
                <img src={product.image} height={150} width={200} />
-               <button onClick={()=>{handleCart(product.id,product.title)}}>add to cart</button>
+               <button onClick={()=>{handleCart(product)}}>add to cart</button>
              </div>
           
              </>
