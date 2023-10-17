@@ -56,8 +56,10 @@ function Products({cart, setCart}) {
                <p>Product Description: {product.description}</p> 
                <p>Price: {`$${product.price}`} </p>
                <p>Rating: {product.rating.rate}</p>
-               <img src={product.image} height={150} width={200} />
+               <img src={product.image} height={100} width={85} />
                <button onClick={()=>{handleCart(product)}}>add to cart</button>
+
+
              </div>
           
              </>
