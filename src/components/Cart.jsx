@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
-
+// in this component, you will need to check if the user is authenticated or not - only authenticated useres should be able to add to cart 
 export default function Cart({cart, setCart}) {
 
     const navigate=useNavigate()
@@ -11,6 +11,7 @@ export default function Cart({cart, setCart}) {
     // here, the parameter should be event, not product. 
     // need to parse the event object to get the information we want
     const qtyM=(product)=>{
+      // why are we copying the cart object?
       // in react, we **should not** directly manipulate the state - we should make a copy, manipulate that, and then use setCart to update the state value. 
         let newCart=cart 
          

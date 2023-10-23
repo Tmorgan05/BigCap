@@ -10,6 +10,12 @@ Use [this API](https://fakestoreapi.com/) while you're building your front end a
 NOTES from 10/17: 
 - Bug - cart has buttons to remove/add products, but they aren't currently working. 
 Next steps: 
-[ ] Change cart item quantity - increase/decrease quantity by 1
-[ ] Remove an item from the cart entirely (set quantity to 0 and remove from cart)
-[ ] Show total price of items in cart, even as item quanity changes.
+    [ ] Change cart item quantity - increase/decrease quantity by 1
+    [ ] Remove an item from the cart entirely (set quantity to 0 and remove from cart)
+    [ ] Show total price of items in cart, even as item quanity changes.
+- Products 
+    [ ] Method to show product details needed 
+- Cart 
+    [ ] Only logged-in users should be able to add/remove/view the cart 
+    [ ] Cart should have a way to navigate to checkout 
+

@@ -48,6 +48,7 @@ function Products({cart, setCart}) {
        <p>Fake Store Products</p>
        <Link to="/cart">view cart</Link>
        {
+        // here - there should be a way to view product details (button, page, something)
          products.map((product) => {
            return (
              <>
