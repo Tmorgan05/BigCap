@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react'
 import {Link} from "react-router-dom"
 
-function Products({cart, setCart}) {
+function Products({cart, setCart, token}) {
    const [products, setProducts] = useState([])
    const handleCart=(product)=>{
-      let newCart=cart
+      let newCart=[...cart]
       let newProduct=product
       console.log(cart)
-      const itemIndex=cart.findIndex(item=>{
+      const itemIndex=cart.findIndex(item=>
         item.id===product.id
-      })
+      )
       if (itemIndex>-1){
         newCart[itemIndex].quantity++
       } else {
@@ -46,7 +46,8 @@ function Products({cart, setCart}) {
    return (
      <div>
        <p>Fake Store Products</p>
-       <Link to="/cart">view cart</Link>
+       {token&&
+       <Link to="/cart">view cart</Link>}
        {
         // here - there should be a way to view product details (button, page, something)
          products.map((product) => {
@@ -58,7 +59,8 @@ function Products({cart, setCart}) {
                <p>Price: {`$${product.price}`} </p>
                <p>Rating: {product.rating.rate}</p>
                <img src={product.image} height={100} width={85} />
-               <button onClick={()=>{handleCart(product)}}>add to cart</button>
+               {token&&
+               <button onClick={()=>{handleCart(product)}}>add to cart</button>}
 
 
              </div>

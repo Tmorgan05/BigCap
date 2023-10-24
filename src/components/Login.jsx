@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({token, setToken}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [success, setSuccess] = useState(true)
@@ -25,7 +25,7 @@ function Login() {
         if (response.ok) {
          const data=await response.json()
          console.log(data)   
-        
+         setToken(data.token)
         navigate("/products")
             
         } else {

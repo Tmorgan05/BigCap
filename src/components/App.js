@@ -9,6 +9,7 @@ import CheckoutComplete from './CheckoutComplete'
 
 const App = () => {
 const [cart, setCart] = useState ([])
+const [token, setToken] = useState ("")
   return (
     <>
 
@@ -16,9 +17,9 @@ const [cart, setCart] = useState ([])
 
       <Routes>
          <Route path="/" element={<Welcome/>}/>
-        <Route path="/products" element={<Products cart={cart} setCart={setCart}/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>}/>
+        <Route path="/products" element={<Products cart={cart} setCart={setCart} token={token}/>}/>
+        <Route path="/login" element={<Login token={token} setToken={setToken}/>}/>
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token}/>}/>
         <Route path="/checkoutcomplete" element={<CheckoutComplete/>}/>
       </Routes>
     </>
