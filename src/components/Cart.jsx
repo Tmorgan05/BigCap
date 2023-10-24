@@ -11,20 +11,25 @@ export default function Cart({cart, setCart}) {
     // here, the parameter should be event, not product. 
     // need to parse the event object to get the information we want
     const qtyM=(product)=>{
+      console.log(product, "product")
       // why are we copying the cart object?
       // in react, we **should not** directly manipulate the state - we should make a copy, manipulate that, and then use setCart to update the state value. 
-        let newCart=cart 
-         
+      let newCart = [...cart]
+         console.log(newCart, "new cart")
+         console.log(cart, "cart")
+
         // our cart is an array - the best way to access items inside an array is using index because an array maintains its order. 
-        const itemIndex=cart.findIndex(item=>{ 
-          item.id===product.id                  
-        })
+        const itemIndex=cart.findIndex(item=> 
+          item.id===product.id                 
+        )
+        console.log(itemIndex, "item index")
         //there are two possible cases: 
         // case 1: we have two or more products in our cart  
         // case 2: we have one product in our cart
         //case 1 - we are only changing the quantity property on the product - it stays in the cart 
         if (product.quantity >1){
             newCart[itemIndex].quantity--
+            
         // case 2 - once we reduce the quantity, we now have 0 of this product in our cart - we need to remove it entirely. 
         } else {
             newCart.splice(itemIndex, 1)
@@ -33,16 +38,21 @@ export default function Cart({cart, setCart}) {
          setCart(newCart)
     }
     const qtyP=(product)=>{
-        let newCart=cart
-        const itemIndex=cart.findIndex(item=>{
+      console.log("product", product)
+        let newCart = [...cart]
+        const itemIndex=cart.findIndex(item=>
           item.id===product.id
-        })
+        )  
+          console.log(itemIndex, "itemd")
+          console.log("cart", cart)
+          console.log("new cart", newCart)
+      
         newCart[itemIndex].quantity++
 
          setCart(newCart)
         }
     const remove=(product)=>{
-        let newCart=cart
+      let newCart = [...cart]
         const itemIndex=cart.findIndex(item=>{
           item.id===product.id
         })
@@ -72,9 +82,9 @@ export default function Cart({cart, setCart}) {
         <div>
           {/* Add a value property on each button. Something like value={product.quantity-1} (for the - button). 
           This way, you can access the desired quantity of the product using event.target.value to set the new quantity  */}
-          <button onClick={(product)=>qtyM(product)}>-</button>
-          <button onclick={(product)=>qtyP(product)}>+</button></div>
-        <div><button onClick={(product)=>remove(product)}>remove item</button></div>
+          <button onClick={()=>qtyM(product)}>-</button>
+          <button onClick={()=>qtyP(product)}>+</button></div>
+        <div><button onClick={()=>remove(product)}>remove item</button></div>
       </div>
      
 
